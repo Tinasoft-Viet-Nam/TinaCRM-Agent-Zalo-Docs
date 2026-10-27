@@ -7,6 +7,7 @@
 - `data-flow.svg`: luồng hằng ngày, gồm lấy tin mới → phân tích → kiểm tra → TinaCRM (Companies → People → Opportunities → Notes → Tasks) → brief sale.
 - `outputs-map.svg`: các thư mục con trong `outputs/`.
 - `zalo-window.svg`: khung nhắn tự do 48 giờ sau tin cuối của khách (`zalo.free_message_window_hours`).
+- `codex-open-folder.svg`, `codex-trust.svg`, `codex-permissions.svg`: mở workflow bằng Codex trong ChatGPT desktop app (New chat, Work in: This computer, chọn thư mục, tin cậy thư mục, chế độ quyền). Vẽ theo tài liệu learn.chatgpt.com (2026-10-27), chờ thay bằng ảnh chụp thật.
 
 Sơ đồ không phải ảnh chụp giao diện Zalo hay TinaCRM.
 
@@ -17,4 +18,4 @@ Sơ đồ không phải ảnh chụp giao diện Zalo hay TinaCRM.
 - `tinacrm-api-keys*.png`, `tinacrm-api-key-form*.png`, `tinacrm-api-key-created*.png`: TinaCRM Settings → MCP & APIs → API, chụp 2026-10-19. Đã cắt thanh địa chỉ và che chuỗi khóa.
 - `tinacrm-key-dialog.png`: hộp thoại do `scripts/tinacrm_save_key.sh` bật lên (cùng script với workflow này), chụp 2026-10-19.
 
-Còn thiếu ảnh chụp thật: hộp thoại `scripts/zalo_save_app.sh`, công cụ API Explorer của Zalo, gắn nhãn trong OA Manager. Khi chụp, che Secret Key, token và thông tin khách.
+Còn thiếu ảnh chụp thật: Codex trong ChatGPT desktop app (mở thư mục, hỏi tin cậy, menu quyền, mục Scheduled), hộp thoại `scripts/zalo_save_app.sh`, công cụ API Explorer của Zalo, gắn nhãn trong OA Manager. Khi chụp, che Secret Key, token và thông tin khách.

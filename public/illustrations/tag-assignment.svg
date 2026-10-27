@@ -25,6 +25,6 @@
 <text x="782" y="377" font-size="19" font-weight="700">Người quản lý</text><text x="782" y="402" font-size="16">Chọn sale để giao</text>
 <rect x="45" y="465" width="1010" height="130" rx="12" fill="#fff" stroke="#b8cabd"/>
 <text x="68" y="503" font-size="19" font-weight="700">Gắn nhãn thế nào?</text>
-<text x="68" y="537" font-size="17">1. Người quản lý nhắn Claude “Giao chị Hoa cho Minh” — Claude cho xem trước, duyệt xong mới gắn.</text>
+<text x="68" y="537" font-size="17">1. Người quản lý nhắn trợ lý “Giao chị Hoa cho Minh” — trợ lý cho xem trước, duyệt xong mới gắn.</text>
 <text x="68" y="569" font-size="17">2. Hoặc sale tự gắn nhãn của mình trong OA Manager (oa.zalo.me) khi nhận khách.</text>
 </g></svg>

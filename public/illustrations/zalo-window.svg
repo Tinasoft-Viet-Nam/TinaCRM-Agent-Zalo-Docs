@@ -12,7 +12,7 @@
 <text x="622" y="282" font-size="19" font-weight="700">Sau 48 giờ: tạo task cho sale</text>
 <text x="590" y="205" font-size="16" fill="#53655a">48 giờ</text><path d="M600 210V230" stroke="#53655a" stroke-width="2"/>
 <rect x="45" y="350" width="1010" height="110" rx="12" fill="#fff" stroke="#b8cabd"/>
-<text x="68" y="388" font-size="18">Trong khung: Claude soạn tin, bạn duyệt, gửi bằng đúng ứng dụng của sale phụ trách khách.</text>
-<text x="68" y="422" font-size="18">Ngoài khung: Claude tạo task trên TinaCRM để sale gọi hoặc nhắn trực tiếp.</text>
+<text x="68" y="388" font-size="18">Trong khung: trợ lý soạn tin, bạn duyệt, gửi bằng đúng ứng dụng của sale phụ trách khách.</text>
+<text x="68" y="422" font-size="18">Ngoài khung: trợ lý tạo task trên TinaCRM để sale gọi hoặc nhắn trực tiếp.</text>
 <text x="68" y="448" font-size="15" fill="#53655a">Số giờ có thể đổi theo chính sách Zalo; workflow đọc từ cấu hình zalo.free_message_window_hours.</text>
 </g></svg>
