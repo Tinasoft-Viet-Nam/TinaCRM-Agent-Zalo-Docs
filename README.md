@@ -1,12 +1,12 @@
 # Sổ tay Zalo OA → CRM (Next.js)
 
-Website hướng dẫn tiếng Việt cho người dùng ít quen công nghệ, đi theo chu trình 10 bước trong `workflows/USER_GUIDE_FLOW.md`. Nội dung dùng chung cho mọi doanh nghiệp, không đọc dữ liệu hội thoại hay cấu hình trong repository.
+Website hướng dẫn tiếng Việt cho người dùng ít quen công nghệ, cho workflow [TinaCRM-Agent-Zalo](https://github.com/Tinasoft-Viet-Nam/TinaCRM-Agent-Zalo), đi theo chu trình 10 bước trong `workflows/USER_GUIDE_FLOW.md` của repo đó. Nội dung dùng chung cho mọi doanh nghiệp, không đọc dữ liệu hội thoại hay cấu hình của workflow.
 
-Bản đang chạy: https://zalo-crm-agent.vercel.app (Vercel project `zalo-crm-agent`, Root Directory `web-docs`).
+Bản đang chạy: https://zalo-crm-agent.vercel.app (Vercel project `zalo-crm-agent`). Mỗi lần đẩy lên nhánh `main` của repo này, Vercel tự dựng lại web.
 
 ## Chạy local
 
-Yêu cầu Node.js >= 20.9 và npm. Chạy trong thư mục `web-docs`:
+Yêu cầu Node.js >= 20.9 và npm. Chạy ở thư mục gốc của repo:
 
 ```bash
 npm install
@@ -28,4 +28,4 @@ npm start
 - Câu lệnh sao chép vào Claude, checklist lưu trong localStorage của trình duyệt.
 - Chế độ sáng/tối, giao diện mobile, hỗ trợ in.
 
-Sửa nội dung tại `src/lib/guides.ts`, hình tại `src/lib/visuals.ts` (khóa `"<slug>:<section id>"`). Khi đổi chu trình trong `workflows/USER_GUIDE_FLOW.md`, cập nhật cả hai nơi để số bước khớp nhau.
+Sửa nội dung tại `src/lib/guides.ts`, hình tại `src/lib/visuals.ts` (khóa `"<slug>:<section id>"`). Khi đổi chu trình trong `workflows/USER_GUIDE_FLOW.md` của repo workflow, cập nhật cả hai repo để số bước khớp nhau.
