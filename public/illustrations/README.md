@@ -18,4 +18,17 @@ Sơ đồ không phải ảnh chụp giao diện Zalo hay TinaCRM.
 - `tinacrm-api-keys*.png`, `tinacrm-api-key-form*.png`, `tinacrm-api-key-created*.png`: TinaCRM Settings → MCP & APIs → API, chụp 2026-10-19. Đã cắt thanh địa chỉ và che chuỗi khóa.
 - `tinacrm-key-dialog.png`: hộp thoại do `scripts/tinacrm_save_key.sh` bật lên (cùng script với workflow này), chụp 2026-10-19.
 
-Còn thiếu ảnh chụp thật: Codex trong ChatGPT desktop app (mở thư mục, hỏi tin cậy, menu quyền, mục Scheduled), hộp thoại `scripts/zalo_save_app.sh`, công cụ API Explorer của Zalo, gắn nhãn trong OA Manager. Khi chụp, che Secret Key, token và thông tin khách.
+## Ảnh chụp Zalo (chụp 2026-10-31 khi làm thật với ứng dụng “Sale Phúc” và OA TinaCRM)
+
+Đã che ảnh đại diện tài khoản, số điện thoại, email và mọi ô token.
+
+- `zalo-dev-apps.png`: developers.zalo.me → Ứng dụng của tôi, nút Tạo mới.
+- `zalo-app-settings.png`: trang Cài đặt sau khi kích hoạt (điện thoại, email, icon 512×512, Lưu thay đổi, công tắc Đang hoạt động).
+- `zalo-app-activate-confirm.png`: hộp xác nhận “Bạn có chắc muốn kích hoạt ứng dụng?”.
+- `zalo-oa-permissions.png`: Official Account → Thiết lập chung, danh sách quyền.
+- `zalo-explorer-oa.png`, `zalo-explorer-tokens.png`: API Explorer, chọn OA Access Token → Lấy Access Token → chọn OA; sau khi có token.
+- `zalo-oauth-consent.png`: cuối cửa sổ cấp quyền Official Account (tick đồng ý → Cấp quyền).
+- `zalo-oa-granted.png`: Quản lý OA, “Danh sách OA đã cấp quyền”.
+- `zalo-key-dialog.png`: hộp thoại `scripts/zalo_save_app.sh` trên Mac (lần 1, Khóa bí mật).
+
+Còn thiếu ảnh chụp thật: Codex trong ChatGPT desktop app (mở thư mục, hỏi tin cậy, menu quyền, mục Scheduled), hộp thoại `zalo_save_app.ps1` trên Windows, gắn nhãn trong OA Manager. Khi chụp, che Secret Key, token và thông tin khách.

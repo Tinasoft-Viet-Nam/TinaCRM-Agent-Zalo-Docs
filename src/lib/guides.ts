@@ -76,21 +76,40 @@ export const cycle: Guide[] = [
       ] },
       { id: "tags", title: "Vì sao phải dùng nhãn" },
       { id: "send", title: "Câu lệnh", paragraphs: ["Trợ lý hỏi lần lượt: có mấy OA, mỗi OA có những ứng dụng nào (App ID, tên gợi nhớ), sale phụ trách (họ tên, email công ty), nhãn của sale, và người quản lý nhận khách chưa được giao. App ID không phải bí mật, có thể gửi trong chat."], prompt: "Khai báo OA, các ứng dụng và sale phụ trách. Hỏi tôi từng câu, rồi cho tôi xem bảng OA – ứng dụng – sale – nhãn để xác nhận." },
-      { id: "no-app", title: "Chưa có ứng dụng?", paragraphs: ["Người quản trị OA vào developers.zalo.me → Tạo ứng dụng → chọn sản phẩm Official Account → liên kết OA → bật quyền quản lý tin nhắn người dùng, quản lý thông tin người dùng và quản lý thông tin OA (cần để gắn nhãn). Không chắc nút nào thì chụp màn hình gửi trợ lý, nhớ che thông tin nhạy cảm."] }
+      { id: "no-app", title: "Chưa có ứng dụng?", paragraphs: ["Mỗi sale cần một ứng dụng trên developers.zalo.me. Ai tạo cũng được, nhưng bước cấp quyền OA (trang Kết nối Zalo) phải do quản trị viên OA làm. Không chắc nút nào thì chụp màn hình gửi trợ lý, nhớ che thông tin nhạy cảm."], steps: [
+        { title: "Tạo ứng dụng", body: "Vào developers.zalo.me, đăng nhập → Ứng dụng của tôi → Tạo mới. Đặt tên dễ nhận ra sale, ví dụ “Sale Minh”." }
+      ] },
+      { id: "activate", title: "Điền thông tin và kích hoạt ứng dụng", paragraphs: ["Bắt buộc. Ứng dụng chưa kích hoạt thì Zalo từ chối mọi yêu cầu (lỗi -209 “App has been not approved”), kể cả khi đã lưu khóa thành công."], steps: [
+        { title: "Điền thông tin", body: "Ở trang Cài đặt của ứng dụng, điền đủ các ô có dấu *: Tên hiển thị, Điện thoại liên hệ, Email liên hệ, Danh mục, Mô tả." },
+        { title: "Tải icon 512×512", body: "Bấm Choose File ở mục Icon ứng dụng, chọn ảnh vuông 512×512, chỉnh vùng cắt rồi bấm Lưu. Thiếu icon thì Zalo báo “Vui lòng cập nhật Icon để có thể kích hoạt ứng dụng”." },
+        { title: "Lưu thay đổi", body: "Bấm Lưu thay đổi ở cuối trang." },
+        { title: "Bật kích hoạt", body: "Bấm công tắc “Chưa kích hoạt” ở góc trên bên phải → Đồng ý. Xong thì công tắc ghi “Đang hoạt động” và Zalo báo “Kích hoạt ứng dụng thành công”." }
+      ] },
+      { id: "permissions", title: "Chọn quyền cho ứng dụng", paragraphs: ["Menu trái: Sản phẩm → Official Account → Thiết lập chung. Mặc định mọi quyền đã được chọn. Tối thiểu cần “Quyền: Quản lý tin nhắn người dùng” (đọc hội thoại) và “Quyền: Quản lý thông tin OA” (thông tin khách, nhãn). Bấm Lưu nếu có thay đổi."] },
+      { id: "no-link", title: "Không bấm “Liên kết”", note: { title: "Chỉ cấp quyền, không liên kết", body: "Trang Quản lý OA của ứng dụng có ô “Liên kết với Official Account”. Đừng dùng: mỗi OA chỉ liên kết được một ứng dụng, liên kết ứng dụng mới sẽ gỡ ứng dụng cũ đang chạy. Workflow chỉ cần cấp quyền (làm ở bước Kết nối Zalo), một OA cấp quyền được cho nhiều ứng dụng." } }
     ]
   },
   {
     slug: "ket-noi-zalo", title: "Kết nối Zalo", shortTitle: "Kết nối Zalo", actor: "Bạn và trợ lý cùng làm",
     description: "Với từng ứng dụng, người quản trị OA lấy Secret Key và Refresh Token rồi dán vào hộp thoại trợ lý bật lên. Không dán khóa vào khung chat.",
     sections: [
-      { id: "token", title: "Lấy Refresh Token (API Explorer)", steps: [
-        { title: "Mở công cụ", body: "Vào developers.zalo.me/tools/explorer, đăng nhập bằng tài khoản quản trị OA." },
-        { title: "Chọn ứng dụng", body: "Chọn đúng ứng dụng của sale đang kết nối, loại OA Access Token." },
-        { title: "Lấy token", body: "Bấm Lấy Access Token, cho phép, rồi sao chép Refresh Token." },
-        { title: "Secret Key", body: "Ở trang ứng dụng trên developers.zalo.me, sao chép Khóa bí mật (Secret Key)." }
+      { id: "before", title: "Trước khi bắt đầu", paragraphs: ["Ứng dụng phải ở trạng thái “Đang hoạt động” (xem bước Khai báo OA & sale, mục kích hoạt). Người làm các bước dưới đây phải là quản trị viên OA."] },
+      { id: "token", title: "Cấp quyền OA và lấy token (API Explorer)", steps: [
+        { title: "Mở API Explorer", body: "Vào developers.zalo.me → Công cụ → API Explorer (hoặc developers.zalo.me/tools/explorer). Ở ô Chọn ứng dụng, chọn đúng ứng dụng của sale." },
+        { title: "Đổi loại token", body: "Ô Loại access token: đổi từ User Access Token sang OA Access Token." },
+        { title: "Chọn OA", body: "Bấm Lấy Access Token → danh sách OA hiện ra → chọn OA của doanh nghiệp." },
+        { title: "Xác nhận thông báo", body: "Hộp Thông báo nói token cũ của ứng dụng này với OA này sẽ hết hiệu lực → bấm “Tôi đã hiểu và muốn tiếp tục”." },
+        { title: "Cấp quyền", body: "Cửa sổ “Yêu cầu cấp quyền truy cập Official Account” mở ra: cuộn xuống cuối, tick ô đồng ý Điều khoản → bấm Cấp quyền." },
+        { title: "Token đã có", body: "Quay lại API Explorer: ô Access token và Refresh token đã có giá trị. Giữ nguyên trang này cho tới khi dán xong." }
       ] },
+      { id: "token-warn", title: "Đừng tải lại API Explorer", note: { title: "Token mới làm token cũ hết hạn", body: "Sau khi có token, đừng tải lại trang, đừng bấm Reset hay Lấy Access Token lần nữa. Làm vậy ô token bị xóa hoặc token vừa lấy hết hiệu lực, khi dán sẽ bị báo “Invalid refresh token”. Nếu lỡ, làm lại các bước trên để lấy token mới rồi dán ngay." } },
+      { id: "granted", title: "Kiểm tra đã cấp quyền", paragraphs: ["Ở trang ứng dụng → Sản phẩm → Official Account → Quản lý OA, mục “Danh sách OA đã cấp quyền” có tên OA là được."] },
       { id: "send", title: "Câu lệnh", prompt: "Kết nối Zalo cho từng ứng dụng đã khai báo. Bật hộp thoại để tôi dán Secret Key và Refresh Token, sau đó kiểm tra đúng OA và đọc thử, không in nội dung tin nhắn." },
-      { id: "dialog", title: "Dán vào hộp thoại", paragraphs: ["Hộp thoại Kết nối Zalo OA hiện ra: dán Khóa bí mật, dán Refresh Token, bấm Lưu. Không thấy hộp thoại thì tìm trên thanh Dock (Mac) hoặc thanh tác vụ (Windows), hoặc phía sau cửa sổ Claude/ChatGPT. Khóa chỉ được lưu khi Zalo chấp nhận.", "Trợ lý báo tên OA nhận được và số hội thoại đọc được. Làm lần lượt cho mọi ứng dụng."] },
+      { id: "dialog", title: "Dán vào hộp thoại", steps: [
+        { title: "Khóa bí mật", body: "Trên Mac, hộp thoại Kết nối Zalo OA hiện ra hai lần. Lần 1: ở trang Cài đặt của ứng dụng, bấm nút sao chép cạnh ô “Khóa bí mật của ứng dụng”, dán vào hộp thoại rồi bấm Tiếp." },
+        { title: "Refresh token", body: "Lần 2: ở API Explorer, bấm nút sao chép cạnh ô Refresh token (ô thứ hai, không phải Access token), dán vào rồi bấm Tiếp." },
+        { title: "Windows", body: "Trên Windows là một cửa sổ có hai ô: dán Khóa bí mật vào ô trên, Refresh token vào ô dưới, bấm Lưu." }
+      ], paragraphs: ["Không thấy hộp thoại thì tìm trên thanh Dock (Mac) hoặc thanh tác vụ (Windows), hoặc phía sau cửa sổ Claude/ChatGPT. Khóa chỉ được lưu khi Zalo chấp nhận.", "Trợ lý báo tên OA nhận được và số hội thoại đọc được. Làm lần lượt cho mọi ứng dụng."] },
       { id: "tag-check", title: "Kiểm tra nhãn sale", paragraphs: ["Trợ lý kiểm tra nhãn của từng sale đã có trên OA chưa. Nhãn chưa có không phải lỗi: Zalo tự tạo khi gắn cho khách đầu tiên."], prompt: "Kiểm tra nhãn sale của từng ứng dụng trên OA." },
       { id: "warn", title: "Lưu ý", note: { title: "Refresh Token chỉ dùng được một lần", body: "Mỗi lần làm mới, Zalo cấp token mới và workflow tự lưu lại. Vì vậy không dùng cùng một ứng dụng ở hai máy hoặc hai thư mục. Nếu ứng dụng không chạy quá khoảng 3 tháng, người quản trị OA phải cấp quyền lại." } }
     ]
@@ -194,6 +213,8 @@ export const help: Guide = {
       { question: "Khách có nhãn của hai sale?", answer: "Trợ lý đánh dấu cần xem lại và hỏi bạn giữ sale nào, rồi gỡ nhãn sale kia." },
       { question: "Sale nghỉ việc, chuyển khách cho người khác?", answer: "Nhắn trợ lý “Đổi sale phụ trách ứng dụng <tên> thành <sale mới>”. Toàn bộ khách mang nhãn đó chuyển theo, không cần gắn lại." },
       { question: "Báo lỗi cần cấp quyền lại Zalo (reauthorize)?", answer: "Refresh Token đã hết hạn hoặc đã bị dùng ở nơi khác. Người quản trị OA lấy Refresh Token mới (bước 4) rồi nhắn “Kết nối lại ứng dụng <tên>”." },
+      { question: "Báo lỗi -209 “App has been not approved”?", answer: "Ứng dụng chưa được kích hoạt. Vào trang Cài đặt của ứng dụng trên developers.zalo.me, điền đủ điện thoại, email, icon 512×512, bấm Lưu thay đổi rồi bật công tắc kích hoạt (bước 3). Khóa đã lưu thì không cần dán lại, chỉ cần nhắn “Kiểm tra lại kết nối Zalo”." },
+      { question: "Báo “Invalid refresh token” khi dán khóa?", answer: "Token đã dán là token cũ, hoặc trang API Explorer đã bị tải lại hay lấy token mới sau đó. Lấy token mới ở API Explorer (bước 4) và dán ngay, không tải lại trang giữa chừng." },
       { question: "Không gửi được tin cho khách?", answer: "Zalo chỉ cho nhắn tự do trong khoảng 48 giờ sau tin cuối của khách. Ngoài khung, trợ lý tạo task để sale gọi hoặc nhắn trực tiếp." },
       { question: "Trợ lý báo đã lưu nhưng TinaCRM không có?", answer: "Yêu cầu trợ lý kiểm tra lại bằng công cụ và báo ID bản ghi." },
       { question: "Lịch chạy không hoạt động?", answer: "Lịch chỉ chạy khi máy bật, không ngủ và ứng dụng đặt lịch (Claude Desktop hoặc ChatGPT desktop app) đang mở. Mở mục Scheduled ở thanh bên trái xem lần chạy gần nhất: nếu đang chờ hỏi quyền, mở ra và cho phép luôn đúng lệnh scripts/… của workflow. Trên ChatGPT, kiểm tra thư mục workflow đã được tin cậy (bước 1)." },
