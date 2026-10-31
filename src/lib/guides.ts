@@ -7,6 +7,7 @@ export type Section = {
   prompt?: string;
   checks?: string[];
   faqs?: { question: string; answer: string }[];
+  link?: { label: string; href: string };
 };
 
 export type Guide = {
@@ -105,9 +106,9 @@ export const cycle: Guide[] = [
     slug: "ket-noi-tinacrm", title: "Kết nối TinaCRM", shortTitle: "Kết nối TinaCRM", actor: "Bạn và trợ lý cùng làm",
     description: "Tạo API key trong TinaCRM, dán vào hộp thoại. Trợ lý ghép từng sale với nhân viên CRM và ánh xạ giai đoạn cơ hội.",
     sections: [
-      { id: "apikey-open", title: "Tạo API key", paragraphs: ["Đăng nhập TinaCRM của doanh nghiệp → Settings → MCP & APIs → tab API → Create API key."] },
+      { id: "apikey-open", title: "Tạo API key", paragraphs: ["Mở app.tinacrm.com, đăng nhập và vào workspace của doanh nghiệp → Settings → MCP & APIs → tab API → Create API key."], link: { label: "Mở TinaCRM (app.tinacrm.com)", href: "https://app.tinacrm.com" } },
       { id: "apikey-form", title: "Điền thông tin khóa", paragraphs: ["Role phải đủ quyền đọc/ghi People, Companies, Opportunities, Tasks và Notes. Nên đặt ngày hết hạn thay vì Never."] },
-      { id: "apikey-copy", title: "Sao chép khóa", paragraphs: ["Khóa chỉ hiện một lần. Bấm Copy rồi gửi câu lệnh dưới đây. Không dán khóa vào khung chat."], prompt: "Kết nối TinaCRM bằng API key. Hỏi tôi địa chỉ TinaCRM, bật hộp thoại để tôi dán API key, sau đó đọc thử dữ liệu, chưa ghi gì." },
+      { id: "apikey-copy", title: "Sao chép khóa", paragraphs: ["Khóa chỉ hiện một lần. Bấm Copy rồi gửi câu lệnh dưới đây. Không dán khóa vào khung chat."], prompt: "Kết nối TinaCRM tại https://app.tinacrm.com bằng API key. Bật hộp thoại để tôi dán API key, sau đó đọc thử dữ liệu, chưa ghi gì." },
       { id: "apikey-paste", title: "Dán khóa vào hộp thoại", paragraphs: ["Trợ lý bật hộp thoại Kết nối TinaCRM: dán khóa vào ô, bấm Lưu."] },
       { id: "mapping", title: "Ghép sale và giai đoạn", steps: [
         { title: "Sale ↔ nhân viên CRM", body: "Trợ lý ghép theo email để task được giao đúng người. Không khớp thì trợ lý hỏi bạn." },
