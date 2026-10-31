@@ -29,7 +29,7 @@ export const cycle: Guide[] = [
       { id: "inputs", title: "Đặt tài liệu vào inputs", steps: [
         { title: "inputs/01_company_info", body: "Hồ sơ công ty, hồ sơ năng lực, khách hàng tiêu biểu." },
         { title: "inputs/02_marketing_materials", body: "Danh mục sản phẩm/dịch vụ, bảng giá, chính sách bán hàng, câu hỏi khách hay hỏi." }
-      ], paragraphs: ["Ưu tiên PDF, Word, Excel có chữ. Ảnh scan có thể không đọc được. Chưa có tài liệu cũng được: ở bước 2 trợ lý có thể đọc website hoặc hỏi bạn từng câu."] },
+      ], paragraphs: ["Ưu tiên PDF, Word, Excel có chữ. Ảnh scan có thể không đọc được. Chưa có tài liệu cũng được: để trống inputs, ở bước 2 bạn gửi link website doanh nghiệp cho trợ lý (hoặc trợ lý hỏi bạn từng câu)."] },
       { id: "choose", title: "Cài phần mềm trợ lý AI", paragraphs: ["Hướng dẫn này lấy Claude Desktop (gói Pro trở lên) làm ví dụ. Bạn có thể dùng phần mềm AI khác cũng mở được thư mục trên máy, ví dụ ChatGPT desktop app; các bước tương tự và câu lệnh giống nhau."], note: { title: "Dùng bản phần mềm cài trên máy, không dùng bản web", body: "Bản web (claude.ai, chatgpt.com) không mở được thư mục và không chạy được lệnh trên máy, nên không dùng được cho workflow này." } },
       { id: "overview", title: "Mở Claude Desktop → tab Code" },
       { id: "folder", title: "Chọn thư mục workflow", paragraphs: ["Choose… → Open folder… → chọn thư mục TinaCRM-Agent-Zalo-main (thư mục có tệp AGENTS.md). Chọn This computer, không chạy trên đám mây: khóa Zalo và TinaCRM chỉ nằm trên máy này."] },
@@ -48,6 +48,7 @@ export const cycle: Guide[] = [
     description: "Trợ lý đọc tài liệu, tóm tắt doanh nghiệp, rồi hỏi danh sách sản phẩm/dịch vụ và các nhóm khách bạn muốn phân loại.",
     sections: [
       { id: "send", title: "Câu lệnh", prompt: "Đọc AGENTS.md và tài liệu trong inputs. Báo tệp nào không đọc được, tóm tắt doanh nghiệp và hỏi tôi phần còn thiếu." },
+      { id: "website", title: "Chưa có tài liệu? Gửi website doanh nghiệp", paragraphs: ["Nếu thư mục inputs đang trống, bạn chỉ cần gửi đường link trang web của doanh nghiệp. Trợ lý đọc website để tóm tắt doanh nghiệp, sản phẩm/dịch vụ, rồi hỏi bạn phần website chưa có (ví dụ bảng giá, khách hàng tiêu biểu). Không có website thì trợ lý sẽ hỏi bạn từng câu."], prompt: "Đọc AGENTS.md. Tôi chưa có tài liệu, đây là website doanh nghiệp của tôi: <dán link website>. Đọc website, tóm tắt doanh nghiệp và hỏi tôi phần còn thiếu." },
       { id: "why", title: "Vì sao cần bước này", paragraphs: ["Khi phân tích hội thoại, trợ lý dùng danh sách sản phẩm để biết khách đang hỏi mua gì, ước giá trị cơ hội. Danh sách nhóm khách (ví dụ khách nóng, khách đã mua, khách phàn nàn) dùng để lọc khách khi làm chiến dịch.", "Bạn duyệt bản tóm tắt, sản phẩm và nhóm khách. Sau này muốn sửa chỉ cần nhắn trợ lý, ví dụ “Thêm sản phẩm gói Premium giá 5 triệu”."] }
     ]
   },

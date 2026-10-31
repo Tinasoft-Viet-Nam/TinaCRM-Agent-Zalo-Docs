@@ -12,7 +12,7 @@ Sơ đồ không phải ảnh chụp giao diện Zalo hay TinaCRM.
 
 ## Ảnh chụp (dùng lại từ sổ tay crm-lead-workflow)
 
-- `github-download.png`: trang GitHub với menu Code → Download ZIP, chụp trên kho crm-lead-workflow. Vị trí nút giống hệt trên kho TinaCRM-Agent-Zalo.
+- `github-download.png`, `github-download-light.png`: trang GitHub Tinasoft-Viet-Nam/TinaCRM-Agent-Zalo với menu Code → Download ZIP (giao diện tối/sáng), chụp khi chưa đăng nhập; tên và ảnh người commit, danh sách contributors đã làm mờ.
 - `claude-code-folder-chosen-full.png`, `claude-code-open-folder-zoom.png`, `claude-code-permissions-zoom.png`, `claude-account-menu.png` và bản sáng `*-light.png`: Claude Desktop (Mac) tab Code, chụp 2026-10-19. Đã xóa tên tài khoản, email và các dự án khác. Thư mục trong ảnh là crm-lead-workflow; người dùng chọn thư mục TinaCRM-Agent-Zalo-main.
 - `tinacrm-api-keys*.png`, `tinacrm-api-key-form*.png`, `tinacrm-api-key-created*.png`: TinaCRM Settings → MCP & APIs → API, chụp 2026-10-19. Đã cắt thanh địa chỉ và che chuỗi khóa.
 - `tinacrm-key-dialog.png`: hộp thoại do `scripts/tinacrm_save_key.sh` bật lên (cùng script với workflow này), chụp 2026-10-19.
