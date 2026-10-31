@@ -23,38 +23,24 @@ export type Guide = {
 export const cycle: Guide[] = [
   {
     slug: "mo-workflow", title: "Tải và mở workflow bằng trợ lý AI", shortTitle: "Tải & mở workflow", actor: "Bạn làm trên máy",
-    description: "Tải ZIP từ GitHub, đặt tài liệu doanh nghiệp vào inputs, rồi mở thư mục bằng trợ lý AI trên máy: Claude (Claude Desktop) hoặc ChatGPT (Codex trong ChatGPT desktop app). Hai cách dùng như nhau.",
+    description: "Tải ZIP từ GitHub, đặt tài liệu doanh nghiệp vào inputs, rồi mở thư mục bằng phần mềm trợ lý AI cài trên máy. Hướng dẫn lấy Claude Desktop làm ví dụ.",
     sections: [
       { id: "download", title: "Tải workflow: Code → Download ZIP", paragraphs: ["Giải nén ra thư mục TinaCRM-Agent-Zalo-main. Mỗi doanh nghiệp dùng một thư mục riêng, và mỗi OA chỉ chạy ở một thư mục, trên một máy."] },
       { id: "inputs", title: "Đặt tài liệu vào inputs", steps: [
         { title: "inputs/01_company_info", body: "Hồ sơ công ty, hồ sơ năng lực, khách hàng tiêu biểu." },
         { title: "inputs/02_marketing_materials", body: "Danh mục sản phẩm/dịch vụ, bảng giá, chính sách bán hàng, câu hỏi khách hay hỏi." }
       ], paragraphs: ["Ưu tiên PDF, Word, Excel có chữ. Ảnh scan có thể không đọc được. Chưa có tài liệu cũng được: ở bước 2 trợ lý có thể đọc website hoặc hỏi bạn từng câu."] },
-      { id: "choose", title: "Chọn trợ lý bạn đang dùng", paragraphs: ["Workflow chạy như nhau trên cả hai. Chỉ làm theo các mục của công cụ bạn chọn ở dưới; từ bước 2 trở đi mọi câu lệnh giống nhau. Nên chọn một công cụ và dùng nó cho cả doanh nghiệp này."], steps: [
-        { title: "Claude", body: "Cài Claude Desktop, gói Pro, Max, Team hoặc Enterprise. Làm các mục “Claude” bên dưới." },
-        { title: "ChatGPT (Codex)", body: "Cài ChatGPT desktop app (Mac hoặc Windows). Mọi gói ChatGPT đều có Codex; gói Plus trở lên dùng được nhiều hơn. Làm các mục “ChatGPT” bên dưới." }
-      ] },
-      { id: "overview", title: "Claude: mở Claude Desktop → tab Code" },
-      { id: "folder", title: "Claude: chọn thư mục workflow", paragraphs: ["Choose… → Open folder… → chọn thư mục TinaCRM-Agent-Zalo-main (thư mục có tệp AGENTS.md). Chọn This computer, không chạy trên đám mây: khóa Zalo và TinaCRM chỉ nằm trên máy này."] },
-      { id: "permissions", title: "Claude: chọn quyền Manual", steps: [
+      { id: "choose", title: "Cài phần mềm trợ lý AI", paragraphs: ["Hướng dẫn này lấy Claude Desktop (gói Pro trở lên) làm ví dụ. Bạn có thể dùng phần mềm AI khác cũng mở được thư mục trên máy, ví dụ ChatGPT desktop app; các bước tương tự và câu lệnh giống nhau."], note: { title: "Dùng bản phần mềm cài trên máy, không dùng bản web", body: "Bản web (claude.ai, chatgpt.com) không mở được thư mục và không chạy được lệnh trên máy, nên không dùng được cho workflow này." } },
+      { id: "overview", title: "Mở Claude Desktop → tab Code" },
+      { id: "folder", title: "Chọn thư mục workflow", paragraphs: ["Choose… → Open folder… → chọn thư mục TinaCRM-Agent-Zalo-main (thư mục có tệp AGENTS.md). Chọn This computer, không chạy trên đám mây: khóa Zalo và TinaCRM chỉ nằm trên máy này."] },
+      { id: "permissions", title: "Chọn quyền Manual", steps: [
         { title: "Auto", body: "Claude tự quyết định việc nào cần hỏi. Không nên dùng khi mới bắt đầu." },
         { title: "Manual (nên chọn)", body: "Luôn hỏi bạn trước khi sửa tệp hoặc chạy lệnh." },
         { title: "Accept edits", body: "Tự sửa tệp không hỏi; chạy lệnh vẫn hỏi." },
         { title: "Plan", body: "Chỉ lập kế hoạch, chưa làm gì. Dùng khi muốn xem trước trợ lý định làm gì." },
         { title: "Bypass permissions (không dùng)", body: "Claude được sửa hoặc xóa tệp, gửi tin cho khách mà không hỏi." }
       ], paragraphs: ["Lần đầu trợ lý chạy lệnh, Claude hỏi quyền: bấm Always allow cho đúng các lệnh python3 scripts/… và sh scripts/… của workflow."] },
-      { id: "codex-open", title: "ChatGPT: mở Codex và chọn thư mục", steps: [
-        { title: "Mở Codex", body: "Mở ChatGPT desktop app, chọn Codex ở menu ChatGPT phía trên, rồi bấm New chat." },
-        { title: "Chạy trên máy này", body: "Ở ô nhập, mục Work in chọn This computer (Local). Không chọn Cloud, không bật Worktree: khóa Zalo, TinaCRM và dữ liệu chống trùng chỉ nằm trong thư mục gốc trên máy này." },
-        { title: "Chọn thư mục", body: "Chọn thư mục TinaCRM-Agent-Zalo-main (thư mục có tệp AGENTS.md). Codex tự đọc tệp này." }
-      ] },
-      { id: "codex-trust", title: "ChatGPT: tin cậy thư mục", paragraphs: ["Lần đầu mở thư mục, Codex hỏi bạn có tin cậy thư mục này không: chọn tin cậy (Trust). Nhờ vậy Codex nạp quy tắc có sẵn của workflow, cho phép đúng các lệnh lấy tin Zalo, ghi TinaCRM và bật hộp thoại nhập khóa chạy mà không hỏi lại mỗi lần. Không tin cậy thì lịch chạy tự động sẽ bị chặn."] },
-      { id: "codex-permissions", title: "ChatGPT: chọn quyền", steps: [
-        { title: "Ask for approval (nên chọn khi mới dùng)", body: "Codex làm trong thư mục workflow, hỏi bạn trước khi làm việc ra ngoài phạm vi đó." },
-        { title: "Approve for me", body: "Giống trên, nhưng để ChatGPT tự xét các yêu cầu đó. Dùng được khi đã quen." },
-        { title: "Full access (không dùng)", body: "Codex được làm mọi việc trên máy mà không hỏi. Workflow không cần quyền này." }
-      ], paragraphs: ["Nút chọn quyền nằm ngay dưới ô nhập. Nếu Codex hỏi quyền cho một lệnh scripts/… của workflow, chọn cho phép luôn với lệnh đó (không phải chỉ một lần), để lần chạy theo lịch không bị dừng.", "Đã từng dùng Claude Code? Codex có mục Settings → Import from Claude Code. Không bắt buộc: workflow đã có sẵn mọi thứ Codex cần."] },
-      { id: "done", title: "Đã mở đúng", paragraphs: ["Claude: thanh dưới ô nhập hiện This computer, tên thư mục workflow và Manual.", "ChatGPT: cuộc trò chuyện Codex chạy trên máy này, đúng thư mục workflow, đã tin cậy thư mục, quyền Ask for approval hoặc Approve for me."], checks: ["Đã giải nén thư mục workflow", "Đã đặt tài liệu vào inputs (hoặc sẽ gửi website)", "Đã mở đúng thư mục bằng Claude hoặc ChatGPT (Codex), chạy trên máy này", "Đã chọn quyền: Manual (Claude) hoặc Ask for approval (ChatGPT)"] }
+      { id: "done", title: "Đã mở đúng", paragraphs: ["Thanh dưới ô nhập hiện This computer, tên thư mục workflow và Manual."], checks: ["Đã giải nén thư mục workflow", "Đã đặt tài liệu vào inputs (hoặc sẽ gửi website)", "Đã mở đúng thư mục bằng phần mềm trợ lý AI trên máy (không phải bản web)", "Đã chọn quyền Manual"] }
     ]
   },
   {
@@ -109,7 +95,7 @@ export const cycle: Guide[] = [
         { title: "Khóa bí mật", body: "Trên Mac, hộp thoại Kết nối Zalo OA hiện ra hai lần. Lần 1: ở trang Cài đặt của ứng dụng, bấm nút sao chép cạnh ô “Khóa bí mật của ứng dụng”, dán vào hộp thoại rồi bấm Tiếp." },
         { title: "Refresh token", body: "Lần 2: ở API Explorer, bấm nút sao chép cạnh ô Refresh token (ô thứ hai, không phải Access token), dán vào rồi bấm Tiếp." },
         { title: "Windows", body: "Trên Windows là một cửa sổ có hai ô: dán Khóa bí mật vào ô trên, Refresh token vào ô dưới, bấm Lưu." }
-      ], paragraphs: ["Không thấy hộp thoại thì tìm trên thanh Dock (Mac) hoặc thanh tác vụ (Windows), hoặc phía sau cửa sổ Claude/ChatGPT. Khóa chỉ được lưu khi Zalo chấp nhận.", "Trợ lý báo tên OA nhận được và số hội thoại đọc được. Làm lần lượt cho mọi ứng dụng."] },
+      ], paragraphs: ["Không thấy hộp thoại thì tìm trên thanh Dock (Mac) hoặc thanh tác vụ (Windows), hoặc phía sau cửa sổ trợ lý AI. Khóa chỉ được lưu khi Zalo chấp nhận.", "Trợ lý báo tên OA nhận được và số hội thoại đọc được. Làm lần lượt cho mọi ứng dụng."] },
       { id: "tag-check", title: "Kiểm tra nhãn sale", paragraphs: ["Trợ lý kiểm tra nhãn của từng sale đã có trên OA chưa. Nhãn chưa có không phải lỗi: Zalo tự tạo khi gắn cho khách đầu tiên."], prompt: "Kiểm tra nhãn sale của từng ứng dụng trên OA." },
       { id: "warn", title: "Lưu ý", note: { title: "Refresh Token chỉ dùng được một lần", body: "Mỗi lần làm mới, Zalo cấp token mới và workflow tự lưu lại. Vì vậy không dùng cùng một ứng dụng ở hai máy hoặc hai thư mục. Nếu ứng dụng không chạy quá khoảng 3 tháng, người quản trị OA phải cấp quyền lại." } }
     ]
@@ -156,10 +142,7 @@ export const cycle: Guide[] = [
         { title: "Nhờ trợ lý đề xuất", body: "“Đề xuất sale cho các khách chưa phân công.” Trợ lý gợi ý theo sản phẩm, khu vực và số khách mỗi sale đang giữ, kèm lý do. Bạn duyệt rồi mới giao." },
         { title: "Chuyển khách", body: "“Chuyển khách Tuấn từ Minh sang Lan.”" }
       ], prompt: "Khách nào chưa có sale? Đề xuất sale cho từng khách, cho tôi xem trước rồi mới giao." },
-      { id: "schedule", title: "Chạy tự động theo lịch", paragraphs: ["Trợ lý hỏi giờ chạy (nên chọn 7:30 sáng ngày làm việc để sale có brief đầu ngày), và có tự đẩy CRM hay chờ bạn duyệt, rồi tự tạo lịch. Mỗi lần chạy hiện ở mục Scheduled ở thanh bên trái.", "Lịch chỉ chạy khi máy bật, không ngủ và ứng dụng đang mở. Bỏ lỡ thì lần sau lấy bù tin, không mất tin.", "Chỉ đặt lịch ở một công cụ: đã đặt ở Claude thì không đặt thêm ở ChatGPT và ngược lại, tránh chạy hai lần."], steps: [
-        { title: "Claude", body: "Lần đầu lịch chạy, nếu Claude hỏi quyền thì mở phiên đó trong Scheduled và bấm Always allow cho đúng các lệnh python3 scripts/… của workflow. Claude Desktop phải đang mở." },
-        { title: "ChatGPT (Codex)", body: "Trước khi đặt lịch, trợ lý nhờ bạn chạy tay “Chạy hôm nay” một lần để chắc không còn câu hỏi quyền nào (thư mục đã tin cậy ở bước 1). Lịch chạy trong thư mục workflow trên máy, không dùng worktree. ChatGPT desktop app phải đang mở." }
-      ], prompt: "Đặt lịch chạy tự động hằng ngày." },
+      { id: "schedule", title: "Chạy tự động theo lịch", paragraphs: ["Trợ lý hỏi giờ chạy (nên chọn 7:30 sáng ngày làm việc để sale có brief đầu ngày), và có tự đẩy CRM hay chờ bạn duyệt, rồi tự tạo lịch. Mỗi lần chạy hiện ở mục Scheduled ở thanh bên trái.", "Lịch chỉ chạy khi máy bật, không ngủ và ứng dụng đang mở. Bỏ lỡ thì lần sau lấy bù tin, không mất tin.", "Lần đầu lịch chạy, nếu trợ lý hỏi quyền thì mở phiên đó trong Scheduled và bấm Always allow cho đúng các lệnh python3 scripts/… của workflow.", "Chỉ đặt lịch ở một phần mềm AI, tránh chạy hai lần."], prompt: "Đặt lịch chạy tự động hằng ngày." },
       { id: "outputs", title: "Kết quả nằm ở đâu" }
     ]
   },
@@ -217,17 +200,17 @@ export const help: Guide = {
       { question: "Báo “Invalid refresh token” khi dán khóa?", answer: "Token đã dán là token cũ, hoặc trang API Explorer đã bị tải lại hay lấy token mới sau đó. Lấy token mới ở API Explorer (bước 4) và dán ngay, không tải lại trang giữa chừng." },
       { question: "Không gửi được tin cho khách?", answer: "Zalo chỉ cho nhắn tự do trong khoảng 48 giờ sau tin cuối của khách. Ngoài khung, trợ lý tạo task để sale gọi hoặc nhắn trực tiếp." },
       { question: "Trợ lý báo đã lưu nhưng TinaCRM không có?", answer: "Yêu cầu trợ lý kiểm tra lại bằng công cụ và báo ID bản ghi." },
-      { question: "Lịch chạy không hoạt động?", answer: "Lịch chỉ chạy khi máy bật, không ngủ và ứng dụng đặt lịch (Claude Desktop hoặc ChatGPT desktop app) đang mở. Mở mục Scheduled ở thanh bên trái xem lần chạy gần nhất: nếu đang chờ hỏi quyền, mở ra và cho phép luôn đúng lệnh scripts/… của workflow. Trên ChatGPT, kiểm tra thư mục workflow đã được tin cậy (bước 1)." },
+      { question: "Lịch chạy không hoạt động?", answer: "Lịch chỉ chạy khi máy bật, không ngủ và phần mềm trợ lý AI đang mở. Mở mục Scheduled ở thanh bên trái xem lần chạy gần nhất: nếu đang chờ hỏi quyền, mở ra và cho phép luôn đúng lệnh scripts/… của workflow." },
       { question: "Đổi giờ, tạm dừng hoặc xem lịch?", answer: "Nhắn trợ lý, ví dụ “Xem các lịch đang chạy”, “Tạm dừng lịch hằng ngày”, “Đổi giờ chạy sang 8:00”." },
       { question: "Thêm sale hoặc ứng dụng mới?", answer: "Nhắn “Thêm ứng dụng mới cho sale <tên>”. Trợ lý làm lại bước 3–5 chỉ cho ứng dụng đó." },
       { question: "Dùng trên hai máy được không?", answer: "Không dùng cùng một ứng dụng Zalo ở hai máy hoặc hai thư mục: token chỉ dùng được một lần nên máy kia sẽ bị từ chối. Dữ liệu chống trùng cũng chỉ nằm ở một thư mục." },
       { question: "Dùng cho doanh nghiệp khác?", answer: "Tải một bản workflow riêng và làm lại từ bước 1." },
-      { question: "Nên dùng Claude hay ChatGPT?", answer: "Workflow chạy như nhau trên cả hai, câu lệnh giống nhau. Chọn công cụ doanh nghiệp đã có tài khoản. Claude cần gói Pro trở lên; ChatGPT gói nào cũng có Codex, gói Plus trở lên dùng được nhiều hơn." },
-      { question: "Đổi từ Claude sang ChatGPT (hoặc ngược lại)?", answer: "Mở cùng thư mục workflow bằng công cụ mới theo bước 1, rồi nhắn “Tôi chuyển sang dùng công cụ này, tiếp tục từ lần trước”. Dữ liệu, khóa và tiến độ vẫn giữ nguyên. Nếu đã đặt lịch, nhờ trợ lý ở công cụ cũ tạm dừng lịch trước, rồi đặt lại ở công cụ mới. Không chạy cùng lúc ở hai công cụ." },
-      { question: "ChatGPT báo lỗi mạng hoặc hỏi quyền mỗi lần chạy?", answer: "Thường do thư mục chưa được tin cậy. Mở cuộc trò chuyện Codex mới cùng thư mục, chọn tin cậy khi được hỏi, và chọn cho phép luôn khi Codex hỏi quyền chạy lệnh scripts/… của workflow. Lỗi mạng kiểu này không có nghĩa là khóa Zalo hay TinaCRM bị sai." }
+      { question: "Dùng bản web của Claude hoặc ChatGPT được không?", answer: "Không. Bản web không mở được thư mục và không chạy được lệnh trên máy. Cần phần mềm cài trên máy, ví dụ Claude Desktop (tab Code) hoặc ChatGPT desktop app." },
+      { question: "Đổi sang phần mềm AI khác?", answer: "Mở cùng thư mục workflow bằng công cụ mới theo bước 1, rồi nhắn “Tôi chuyển sang dùng công cụ này, tiếp tục từ lần trước”. Dữ liệu, khóa và tiến độ vẫn giữ nguyên. Nếu đã đặt lịch, nhờ trợ lý ở công cụ cũ tạm dừng lịch trước, rồi đặt lại ở công cụ mới. Không chạy cùng lúc ở hai công cụ." },
+      { question: "Trợ lý báo lỗi mạng hoặc hỏi quyền mỗi lần chạy?", answer: "Khi trợ lý hỏi quyền chạy lệnh scripts/… của workflow, chọn cho phép luôn (không phải chỉ một lần). Lỗi mạng kiểu này không có nghĩa là khóa Zalo hay TinaCRM bị sai." }
     ] },
     { id: "privacy", title: "Dữ liệu khách hàng", paragraphs: ["Hội thoại, phân tích và khóa chỉ lưu trên máy này, trong thư mục workflow. Trợ lý không in nội dung tin nhắn hay khóa ra khung chat khi không cần. Khi gửi ảnh chụp màn hình cho trợ lý, nhớ che khóa và thông tin khách."] },
-    { id: "usage", title: "Xem mức sử dụng", paragraphs: ["Claude: bấm tên tài khoản ở góc dưới bên trái → Usage.", "ChatGPT (Codex): mở chatgpt.com/codex/settings/usage để xem hạn mức còn lại và lúc được làm mới."] }
+    { id: "usage", title: "Xem mức sử dụng", paragraphs: ["Claude Desktop: bấm tên tài khoản ở góc dưới bên trái → Usage."] }
   ]
 };
 
